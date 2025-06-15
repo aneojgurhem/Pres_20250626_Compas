@@ -134,40 +134,6 @@
  \end{frame}
 
  \begin{frame}
-   \frametitle{A Serverless Many-Task Computing Platform}
-   \begin{alertblock}{Serverless}
-     \begin{quote}
-       Cloud service category in which the customer can use different cloud capabilities types
-       without the customer having to provision, deploy and manage either hardware or software
-       resources, other than providing customer application code or providing customer data.
-       \\
-       --- ISO 22123-2:2023
-     \end{quote}
-   \end{alertblock}
-   \begin{alertblock}{Many-Task Computing}
-     \begin{quote}
-       Approach that aims to bridge the gap between High-Perfomance Computing and High-Throughput Computing.
-       \\
-       --- Wikipedia
-     \end{quote}
-   \end{alertblock}
- \end{frame}
-
- \begin{frame}
-   \frametitle{Open source project}
-   \begin{itemize}
-     \item ArmoniK code is fully available on github
-     \item \href{https://github.com/aneoconsulting/ArmoniK}{ArmoniK's GitHub}
-     \item You can contribute
-     \item We are open to collaborations
-     \item How to use it ?
-           \begin{itemize}
-             \item \href{https://armonik.readthedocs.io/en/latest/content/armonik/getting-started.html}{Getting started}
-           \end{itemize}
-   \end{itemize}
- \end{frame}
-
- \begin{frame}
    \frametitle{Task-based Programming in ArmoniK}
    \begin{block}{Definition}
      Paradigm focusing on the decomposition of complex operations into smaller tasks
@@ -202,27 +168,6 @@
      \begin{column}{0.5\textwidth}
        \centering
        \includegraphics[width=0.95\textwidth]{mermaid-task-graph.png}
-     \end{column}
-   \end{columns}
- \end{frame}
-
- \begin{frame}
-   \frametitle{The Client-Worker Pattern}
-   \begin{columns}[T]
-     \begin{column}{0.5\textwidth}
-       \begin{itemize}
-         \item \textbf{Client}: User-developed software that submits the initial task graphs to ArmoniK and retrieves results
-         \item \textbf{Worker}: User-developed software capable of performing one or several tasks, depending on its implementation:
-               \begin{itemize}
-                 \item Can take input data, perform calculations, and return a result
-                 \item Can submit new tasks and set the result as output of a new task
-               \end{itemize}
-         \item \textbf{Synchronization via Data}: The client might not be aware that the task graph has been modified
-       \end{itemize}
-     \end{column}
-     \begin{column}{0.5\textwidth}
-       \centering
-       \includegraphics[width=0.95\textwidth]{mermaid-client-worker.png}
      \end{column}
    \end{columns}
  \end{frame}
@@ -267,6 +212,7 @@
  \begin{frame}
    \frametitle{ArmoniK Built-in Features}
    \begin{itemize}
+     \item \textbf{Open Source}: \url{https://github.com/aneoconsulting/ArmoniK}
      \item \textbf{Observability}: Extensive GUIs, CLIs, monitoring APIs, metrics, logs, and traces
      \item \textbf{Portability}: Effort to transfer an application from one environment to another
            \begin{itemize}
@@ -388,6 +334,7 @@
              \item Particle physics : radioprotection, lagrangian, ray tracing
            \end{itemize}
      \item Maybe yours !
+     \item Open Source : \url{https://github.com/aneoconsulting/ArmoniK}
    \end{itemize}
  \end{frame}
 
