@@ -32,7 +32,7 @@
 \newcommand{\vennvgap}{0}
 \newcommand{\vennoverlap}{2.1cm}
 
-\begin{section}{Current State of HPC}
+\begin{section}{Does Performance Stands for Speed?}
  \begin{frame}{HPC: At the Cutting Edge of Three Disciplines}
    \begin{center}
      \begin{venndiagram3sets}[labelOnlyA=Software, labelA={}, labelOnlyB=Hardware, labelB={}, labelOnlyC={Scientific Problem to Solve}, labelC={}, labelABC={HPC}, showframe=false, radius=\vennradius, hgap=\vennhgap, vgap=\vennvgap, overlap=\vennoverlap]
@@ -105,20 +105,36 @@
              \item And efficient?
              \item And portable?
            \end{itemize}
-     \item Properties that are not always considered in HPC:
-           \begin{itemize}
-             \item \textbf{Portability}: Ability to run on different hardware and software environments
-             \item \textbf{Fault Tolerance}: Ability to recover from hardware or software failures
-             \item \textbf{Malleability}: Ability to adapt to changing resource availability
-             \item \textbf{Ease of use}: Ability to write and maintain code without deep expertise in parallel programming
-             \item \textbf{Observability}: Ability to monitor and understand the system's state
-             \item \textbf{Maintenability}: Ability to update and maintain the system over time
-           \end{itemize}
+   \end{itemize}
+ \end{frame}
+
+ \begin{frame}
+   \frametitle{Other Properties to Consider Rather than Speed}
+   \begin{itemize}
+     \item \textbf{Portability}: Ability to run on different hardware and software environments
+     \item \textbf{Fault Tolerance}: Ability to recover from hardware or software failures
+     \item \textbf{Malleability}: Ability to adapt to changing resource availability
+     \item \textbf{Ease of use}: Ability to write and maintain code without deep expertise in parallel programming
+     \item \textbf{Observability}: Ability to monitor and understand the system's state
+     \item \textbf{Maintenability}: Ability to update and maintain the system over time
+     \item \textbf{Checkpointing}: Ability to save and restore the system's state
+     \item \textbf{Prefetching}: Ability to load data into memory before it is needed
+     \item \textbf{Overlapping}: Ability to overlap computation and communication
+     \item \textbf{Load Balancing}: Ability to distribute work evenly across resources
    \end{itemize}
  \end{frame}
 \end{section}
 
 \begin{section}{ArmoniK: A User-Friendly Trade-Off}
+ \begin{frame}
+   \frametitle{ArmoniK's Goals}
+   \begin{itemize}
+     \item Simplify the development of distributed applications
+     \item Provide a user-friendly interface for scientists and engineers
+     \item Adress the challenges of HPC without requiring deep expertise in parallel programming
+     \item Getting reasonable performances
+   \end{itemize}
+ \end{frame}
 
  \begin{frame}
    \frametitle{ArmoniK: a Hybrid Framework}
@@ -321,26 +337,29 @@
  \end{frame}
 
  \begin{frame}
-   \frametitle{We are looking for other use cases}
+   \frametitle{What It Looks Like}
+
+ \end{frame}
+\end{section}
+
+\begin{section}{The Right Tool for the Right Job}
+ \begin{frame}
+   \frametitle{The Right Tool for the Right Job}
    \begin{itemize}
-     \item Currently used in financial applications
-     \item Studying autonomous driving solutions with an automotive industrial partner
-     \item In need of more use cases
-     \item Examples:
-           \begin{itemize}
-             \item Porting an application to ArmoniK
-             \item Coupling several task based applications
-             \item Accelerate iterative methods with AI
-             \item Particle physics : radioprotection, lagrangian, ray tracing
-           \end{itemize}
-     \item Maybe yours !
-     \item Open Source : \url{https://github.com/aneoconsulting/ArmoniK}
+     \item No single scientist can master all fields in HPC.
+     \item Interfaces between disciplines are crucial.
+     \item And the trade-off between performance and usability is essential.
+     \item However, current trade-off is more about speed than usability, fault tolerance, and portability.
+     \item ArmoniK aims to provide a user-friendly interface for scientists and engineers while maintaining reasonable performance.
+     \item It allows scientists to focus on their research without deep expertise in parallel programming.
+     \item ArmoniK is not a replacement for existing HPC tools but a complementary framework that simplifies the development of distributed applications.
+     \item We are looking for more use cases: \url{https://github.com/aneoconsulting/ArmoniK}
    \end{itemize}
  \end{frame}
 
  \begin{frame}
    \frametitle{Thank you for your attention!}
-   Questions?
+   Do you have any questions?
  \end{frame}
 \end{section}
 
