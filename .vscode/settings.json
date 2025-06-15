@@ -1,0 +1,18 @@
+{
+  "latex-workshop.latex.tools": [
+    {
+      "name": "latexmk",
+      "command": "latexmk",
+      "args": [
+        "%DOC%"
+      ],
+    }
+  ],
+  "latex-workshop.latex.recipes": [
+    {
+      "name": "latexmk (custom env)",
+      "tools": ["latexmk"]
+    }
+],
+"latex-workshop.formatting.latex": "latexindent"
+}

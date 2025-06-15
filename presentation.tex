@@ -1,0 +1,400 @@
+\documentclass[10pt,aspectratio=1609]{beamer}
+\usepackage{hyperref}
+\usepackage{amsmath}
+\usepackage{minted}
+\usepackage{venndiagram}
+\usepackage{svg}
+
+\usepackage{aneotheme}
+
+\begin{document}
+\author{Jérôme Gurhem}
+\title{Cloud computing with \\ ArmoniK}
+\subtitle{DP2E-AI 2025}
+\institute{Aneo}
+\date{\today}
+
+\titlepage
+
+\AtBeginSection[]
+{
+  \frame{\sectionpage}
+}
+
+\begin{frame}
+  \frametitle{Outline}
+  \large
+  \tableofcontents
+\end{frame}
+
+\newcommand{\vennradius}{2.7cm}
+\newcommand{\vennhgap}{2cm}
+\newcommand{\vennvgap}{0}
+\newcommand{\vennoverlap}{2.1cm}
+
+\begin{section}{Current State of HPC}
+ \begin{frame}{HPC: At the Cutting Edge of Three Disciplines}
+   \begin{center}
+     \begin{venndiagram3sets}[labelOnlyA=Software, labelA={}, labelOnlyB=Hardware, labelB={}, labelOnlyC={Scientific Problem to Solve}, labelC={}, labelABC={HPC}, showframe=false, radius=\vennradius, hgap=\vennhgap, vgap=\vennvgap, overlap=\vennoverlap]
+       \fillACapBCapC
+     \end{venndiagram3sets}
+   \end{center}
+ \end{frame}
+
+ \begin{frame}
+   \frametitle{The Decline of the Scientific Polymath}
+
+   \begin{itemize}
+     \item \textbf{17th–18th centuries:} Scientists like Newton and Leibniz contributed across disciplines — science was relatively unified.
+     \item \textbf{19th century:} Rapid growth of disciplines (e.g., chemistry, biology, physics); first signs of specialization.
+     \item \textbf{20th century:} Explosion of subfields and technical complexity; solo mastery becomes impossible.
+     \item \textbf{Today:} Even within a single field (e.g., AI, genetics), experts specialize narrowly — cross-field comprehension is rare.
+   \end{itemize}
+
+   \begin{block}{Result}
+     \begin{itemize}
+       \item No one scientist can read or understand all scientific publications.
+       \item Applicable to HPC : It is increasingly difficult to master all its fields.
+     \end{itemize}
+   \end{block}
+ \end{frame}
+
+ \begin{frame}{Building Interfaces Between Disciplines}
+   \begin{center}
+     \begin{venndiagram3sets}[labelOnlyA=Software, labelA={}, labelOnlyB=Hardware, labelB={}, labelOnlyC={Scientific Problem to Solve}, labelC={}, labelABC={HPC}, labelOnlyAB={Compilers}, labelOnlyBC=\parbox{2cm}{ASIC, FPGA, Tensor Cores}, labelOnlyAC={Libraries}, showframe=false, radius=\vennradius, hgap=\vennhgap, vgap=\vennvgap, overlap=\vennoverlap]
+       \fillACapBCapC
+     \end{venndiagram3sets}
+   \end{center}
+ \end{frame}
+
+ \begin{frame}{Current Interfaces}
+   \begin{itemize}
+     \item \textbf{Hardware/Software}
+           \begin{itemize}
+             \item \textbf{Programming Languages:} C, C++, Python, Fortran, etc.
+             \item \textbf{Compilers:} GCC, Intel, LLVM, etc.
+           \end{itemize}
+     \item \textbf{Software/Scientific Problem}
+           \begin{itemize}
+             \item \textbf{Libraries:} BLAS, LAPACK, FFTW, TensorFlow, PyTorch, etc.
+             \item \textbf{Frameworks:} MPI, OpenMP, CUDA, OpenCL, Kokkos, etc.
+           \end{itemize}
+     \item \textbf{Hardware/Scientific Problem}
+           \begin{itemize}
+             \item \textbf{AI:} AWS Inferentia, Google TPU, Nvidia Tensor Cores, etc.
+             \item \textbf{Dedicated Accelerators:} FPGAs, ASICs, etc.
+           \end{itemize}
+   \end{itemize}
+   \begin{alertblock}{Are they good enough?}
+     \begin{itemize}
+       \item Yes ! For the trade-off they were designed for.
+       \item Still, they need deep expertise to be used effectively.
+     \end{itemize}
+   \end{alertblock}
+ \end{frame}
+
+ \begin{frame}
+   \frametitle{Is HPC Really All About Speed?}
+   \begin{itemize}
+     \item Performance = Speed ?
+     \item Other questions to consider:
+           \begin{itemize}
+             \item How many computing nodes can I lose/add during execution?
+             \item How many processes can crash during execution?
+             \item How much time a physicist needs to write parallel and scalable applications?
+             \item And efficient?
+             \item And portable?
+           \end{itemize}
+     \item Properties that are not always considered in HPC:
+           \begin{itemize}
+             \item \textbf{Portability}: Ability to run on different hardware and software environments
+             \item \textbf{Fault Tolerance}: Ability to recover from hardware or software failures
+             \item \textbf{Malleability}: Ability to adapt to changing resource availability
+             \item \textbf{Ease of use}: Ability to write and maintain code without deep expertise in parallel programming
+             \item \textbf{Observability}: Ability to monitor and understand the system's state
+             \item \textbf{Maintenability}: Ability to update and maintain the system over time
+           \end{itemize}
+   \end{itemize}
+ \end{frame}
+\end{section}
+
+\begin{section}{ArmoniK: A User-Friendly Trade-Off}
+
+ \begin{frame}
+   \frametitle{ArmoniK: a Hybrid Framework}
+   \includegraphics[width=\textwidth]{armonik_framework.pdf}
+   \begin{itemize}
+     \item Computational kernels: User computations
+     \item Data management: Reads, Writes, Communications between processes
+     \item Advanced features: Overlapping, load balancing
+     \item Jobs management: Job queues, resource allocation, job lifecycle
+     \item Jobs / Resources mapping: Determine job execution on which machines
+     \item Resources management: Machine pool update, node addition or removal
+   \end{itemize}
+ \end{frame}
+
+ \begin{frame}
+   \frametitle{A Serverless Many-Task Computing Platform}
+   \begin{alertblock}{Serverless}
+     \begin{quote}
+       Cloud service category in which the customer can use different cloud capabilities types
+       without the customer having to provision, deploy and manage either hardware or software
+       resources, other than providing customer application code or providing customer data.
+       \\
+       --- ISO 22123-2:2023
+     \end{quote}
+   \end{alertblock}
+   \begin{alertblock}{Many-Task Computing}
+     \begin{quote}
+       Approach that aims to bridge the gap between High-Perfomance Computing and High-Throughput Computing.
+       \\
+       --- Wikipedia
+     \end{quote}
+   \end{alertblock}
+ \end{frame}
+
+ \begin{frame}
+   \frametitle{Open source project}
+   \begin{itemize}
+     \item ArmoniK code is fully available on github
+     \item \href{https://github.com/aneoconsulting/ArmoniK}{ArmoniK's GitHub}
+     \item You can contribute
+     \item We are open to collaborations
+     \item How to use it ?
+           \begin{itemize}
+             \item \href{https://armonik.readthedocs.io/en/latest/content/armonik/getting-started.html}{Getting started}
+           \end{itemize}
+   \end{itemize}
+ \end{frame}
+
+ \begin{frame}
+   \frametitle{Task-based Programming in ArmoniK}
+   \begin{block}{Definition}
+     Paradigm focusing on the decomposition of complex operations into smaller tasks
+   \end{block}
+   \begin{itemize}
+     \item Expression of complex data-driven dependencies
+     \item ArmoniK's \textbf{distributed scheduler} responsible for:
+           \begin{itemize}
+             \item Task distribution and load balancing
+             \item Dependency resolution
+             \item Tasks execution
+             \item Data management (overlapping, prefetching, and checkpointing)
+           \end{itemize}
+   \end{itemize}
+   \vskip1ex
+   \footnotesize
+   \inputminted[frame=single]{python}{task-based-programming.py}
+ \end{frame}
+
+ \begin{frame}
+   \frametitle{ArmoniK Programming Model}
+   \begin{columns}[T]
+     \begin{column}{0.5\textwidth}
+       \begin{itemize}
+         \item \textbf{Task Graph}: Bipartite DAG whose node sets are tasks and data
+         \item \textbf{Task node}: Single-node computation (possibly multi-threaded) taking one or several data inputs and outputting one or several data
+         \item \textbf{Data node}: Immutable piece of data depending on only one task at most
+         \item \textbf{Dependencies}: Dependencies between tasks are expressed as data dependencies
+         \item \textbf{Dynamic}: The graph may not be entirely known in advance (tasks can append tasks and replace edges with subgraphs)
+       \end{itemize}
+     \end{column}
+     \begin{column}{0.5\textwidth}
+       \centering
+       \includegraphics[width=0.95\textwidth]{mermaid-task-graph.png}
+     \end{column}
+   \end{columns}
+ \end{frame}
+
+ \begin{frame}
+   \frametitle{The Client-Worker Pattern}
+   \begin{columns}[T]
+     \begin{column}{0.5\textwidth}
+       \begin{itemize}
+         \item \textbf{Client}: User-developed software that submits the initial task graphs to ArmoniK and retrieves results
+         \item \textbf{Worker}: User-developed software capable of performing one or several tasks, depending on its implementation:
+               \begin{itemize}
+                 \item Can take input data, perform calculations, and return a result
+                 \item Can submit new tasks and set the result as output of a new task
+               \end{itemize}
+         \item \textbf{Synchronization via Data}: The client might not be aware that the task graph has been modified
+       \end{itemize}
+     \end{column}
+     \begin{column}{0.5\textwidth}
+       \centering
+       \includegraphics[width=0.95\textwidth]{mermaid-client-worker.png}
+     \end{column}
+   \end{columns}
+ \end{frame}
+
+ \begin{frame}
+   \frametitle{Dynamic Graph}
+   \begin{block}{Definition}
+     Dependency graph is not fully known when scheduling starts.
+   \end{block}
+   \begin{itemize}
+     \item Task dependencies not known before submission
+     \item Submissions can happen anytime
+     \item Tasks can submit new tasks
+     \item Tasks can delegate the production of their output to their new tasks
+   \end{itemize}
+   \footnotesize
+   \inputminted[frame=single]{python}{subtasking.py}
+ \end{frame}
+
+ \begin{frame}
+   \frametitle{Dynamic Graph Example}
+   \begin{figure}
+     \includesvg[width=0.8\textwidth]{subtasking.svg}
+   \end{figure}
+ \end{frame}
+
+ \begin{frame}
+   \frametitle{Computations/Comm Overlapping}
+   \begin{block}{Data Management}
+     Responsibility for data allocation, transfer, and storage between computational operations
+   \end{block}
+   \begin{itemize}
+     \item ArmoniK is responsible for tasks input and output data management
+     \item Allows for automatic communication + scheduling/task execution overlapping
+     \item Automatic Uncoordinated Checkpointing
+   \end{itemize}
+   \begin{figure}
+     \includegraphics[width=0.8\textwidth, trim={0 7cm 0 0}, clip]{pipelining AK 2.pdf}
+   \end{figure}
+ \end{frame}
+
+ \begin{frame}
+   \frametitle{ArmoniK Built-in Features}
+   \begin{itemize}
+     \item \textbf{Observability}: Extensive GUIs, CLIs, monitoring APIs, metrics, logs, and traces
+     \item \textbf{Portability}: Effort to transfer an application from one environment to another
+           \begin{itemize}
+             \item Officially supported languages: C\#, C++, Python, Rust, Java, and JavaScript
+             \item Tasks on different architectures (x86, ARM, GPU, Linux, Windows), applications, environments
+           \end{itemize}
+     \item \textbf{Malleability}: Dynamic reconfiguration of the number of allocated resources during execution without interruption
+     \item \textbf{Resource Sharing}: Share resources between applications to maximize resource utilization
+     \item \textbf{Modularity}: Modules can be swapped without modifying ArmoniK's code to suit user needs and constraints
+     \item \textbf{Production Ready}: Designed to be used in production environments, with a focus on stability, security, scalability, and maintainability
+           \begin{itemize}
+             \item Used by our clients in their critical systems
+             \item Drives our needs for validation and guarantees, monitoring, stability
+           \end{itemize}
+   \end{itemize}
+ \end{frame}
+
+ \begin{frame}
+   \frametitle{Fault Tolerance}
+   \begin{itemize}
+     \item Works without interruption even when one or more nodes fail
+     \item Allow support for preemptible computing resources
+     \item Automatic and efficient task retry on failure
+     \item Each curve represents a percentage of preempted instances
+   \end{itemize}
+   \begin{center}
+     \vspace{0.2ex}
+     \includesvg[width=0.75\textwidth]{bench_preemption.svg}
+   \end{center}
+ \end{frame}
+
+ \begin{frame}
+   \frametitle{Throughput Scalability}
+   \begin{itemize}
+     \item Indep : independent tasks workload
+     \item Graph : nested fork-join workload
+   \end{itemize}
+   \begin{center}
+     \includesvg[width=0.8\textwidth]{bench_scalability.svg}
+   \end{center}
+ \end{frame}
+
+ \begin{frame}
+   \frametitle{Low Round-trip Latency}
+   \begin{itemize}
+     \item Cumulative distribution functions (CDFs) of round-trip latency
+     \item Batched submissions of 1, 10, and 100 independent zero-work tasks
+   \end{itemize}
+   \begin{center}
+     \includesvg[width=0.8\textwidth]{bench_roundtrip_latency.svg}
+   \end{center}
+ \end{frame}
+
+\end{section}
+
+\begin{section}{AI with ArmoniK and JAX}
+ \begin{frame}
+   \frametitle{JAX: A Modern Tool for Scientific Computing and AI}
+   \textbf{JAX} is a Python library that enables high-performance scientific computing by combining:
+   \begin{itemize}
+     \item \textbf{NumPy-Compatible API} for familiar, concise numerical code
+     \item \textbf{Automatic differentiation} for optimization and ML
+     \item \textbf{Just-In-Time (JIT) compilation} for accelerating performance
+     \item \textbf{Seamless CPU, GPU, and TPU execution}
+     \item \textbf{Composable Transformations} Combine transformations easily: e.g., \texttt{jit(grad(f))}, \texttt{vmap(grad(f))}.
+   \end{itemize}
+ \end{frame}
+
+ \begin{frame}
+   \frametitle{XLA: The Compiler Behind the Speed}
+   \begin{itemize}
+     \item \textbf{XLA (Accelerated Linear Algebra)} is a domain-specific compiler developed by Google.
+     \item It transforms JAX Python functions into highly optimized machine code.
+     \item Performs \textbf{operation fusion, memory planning, and hardware-specific optimizations}.
+     \item Enables JAX to deliver \textbf{hardware-level performance} from high-level Python code.
+     \item Produces efficient code for CPUs, GPUs, and TPUs.
+   \end{itemize}
+ \end{frame}
+
+ \begin{frame}
+   \frametitle{Impact for Scientists and Engineers}
+   \begin{itemize}
+     \item Write portable, optimized code without low-level programming
+     \item Accelerate AI models, PDE solvers, and simulation kernels
+     \item Integrate HPC workflows with modern ML toolchains
+     \item Reduces boilerplate in high-performance computing
+     \item Enables reproducible, portable, and efficient scientific models
+   \end{itemize}
+ \end{frame}
+
+ \begin{frame}
+   \frametitle{ArmoniK + JAX: A Powerful Combination}
+   \begin{itemize}
+     \item \textbf{ArmoniK} provides a distributed task scheduler and data management layer.
+     \item \textbf{JAX} offers high-performance numerical computing capabilities.
+     \item Together, they enable:
+           \begin{itemize}
+             \item Scalable, fault-tolerant AI and scientific computing
+             \item Automatic data management and task scheduling
+             \item Efficient execution on heterogeneous hardware
+           \end{itemize}
+     \item Ideal for large-scale AI training, scientific simulations, and data analysis.
+     \item Supports dynamic task graphs and overlapping computations.
+     \item Provides a user-friendly interface for scientists and engineers.
+   \end{itemize}
+ \end{frame}
+
+ \begin{frame}
+   \frametitle{We are looking for other use cases}
+   \begin{itemize}
+     \item Currently used in financial applications
+     \item Studying autonomous driving solutions with an automotive industrial partner
+     \item In need of more use cases
+     \item Examples:
+           \begin{itemize}
+             \item Porting an application to ArmoniK
+             \item Coupling several task based applications
+             \item Accelerate iterative methods with AI
+             \item Particle physics : radioprotection, lagrangian, ray tracing
+           \end{itemize}
+     \item Maybe yours !
+   \end{itemize}
+ \end{frame}
+
+ \begin{frame}
+   \frametitle{Thank you for your attention!}
+   Questions?
+ \end{frame}
+\end{section}
+
+\end{document}
