@@ -9,7 +9,7 @@
 
 \begin{document}
 \author{Jérôme Gurhem}
-\title{Cloud computing with \\ ArmoniK}
+\title{ArmoniK: Simplifying Access to Performance at Scale}
 \subtitle{DP2E-AI 2025}
 \institute{Aneo}
 \date{\today}
@@ -32,7 +32,7 @@
 \newcommand{\vennvgap}{0}
 \newcommand{\vennoverlap}{2.1cm}
 
-\begin{section}{Does Performance Stands for Speed?}
+\begin{section}{Can We Simplify Access to Performance at Scale?}
  \begin{frame}{HPC: At the Cutting Edge of Three Disciplines}
    \begin{center}
      \begin{venndiagram3sets}[labelOnlyA=Software, labelA={}, labelOnlyB=Hardware, labelB={}, labelOnlyC={Scientific Problem to Solve}, labelC={}, labelABC={HPC}, showframe=false, radius=\vennradius, hgap=\vennhgap, vgap=\vennvgap, overlap=\vennoverlap]
@@ -85,6 +85,7 @@
              \item \textbf{Dedicated Accelerators:} FPGAs, ASICs, etc.
            \end{itemize}
    \end{itemize}
+   \pause
    \begin{alertblock}{Are they good enough?}
      \begin{itemize}
        \item Yes ! For the trade-off they were designed for.
@@ -93,35 +94,27 @@
    \end{alertblock}
  \end{frame}
 
- \begin{frame}
-   \frametitle{Is HPC Really All About Speed?}
+ \begin{frame}{Why Look Beyond Current Interfaces?}
    \begin{itemize}
-     \item Performance = Speed ?
-     \item Other questions to consider:
+     \item Complexity of heterogeneous systems is growing rapidly.
+     \item Experts are required to bridge hardware/software/application gaps.
+     \item Scientific applications need:
            \begin{itemize}
-             \item How many computing nodes can I lose/add during execution?
-             \item How many processes can crash during execution?
-             \item How much time a physicist needs to write parallel and scalable applications?
-             \item And efficient?
-             \item And portable?
+             \item Scalability without re-architecting code.
+             \item Transparent access to diverse computing resources.
+             \item Efficient resource utilization and orchestration.
+           \end{itemize}
+     \item Current solutions lack:
+           \begin{itemize}
+             \item Flexibility across architectures.
+             \item Seamless integration and automation.
+             \item User-friendly interfaces for scientists and engineers.
            \end{itemize}
    \end{itemize}
- \end{frame}
-
- \begin{frame}
-   \frametitle{Other Properties to Consider Rather than Speed}
-   \begin{itemize}
-     \item \textbf{Portability}: Ability to run on different hardware and software environments
-     \item \textbf{Fault Tolerance}: Ability to recover from hardware or software failures
-     \item \textbf{Malleability}: Ability to adapt to changing resource availability
-     \item \textbf{Ease of use}: Ability to write and maintain code without deep expertise in parallel programming
-     \item \textbf{Observability}: Ability to monitor and understand the system's state
-     \item \textbf{Maintenability}: Ability to update and maintain the system over time
-     \item \textbf{Checkpointing}: Ability to save and restore the system's state
-     \item \textbf{Prefetching}: Ability to load data into memory before it is needed
-     \item \textbf{Overlapping}: Ability to overlap computation and communication
-     \item \textbf{Load Balancing}: Ability to distribute work evenly across resources
-   \end{itemize}
+   \pause
+   \begin{block}{The Question}
+     Can we simplify access to performance at scale?
+   \end{block}
  \end{frame}
 \end{section}
 
@@ -284,7 +277,7 @@
 
 \end{section}
 
-\begin{section}{AI with ArmoniK and JAX}
+\begin{section}{Towards AI with ArmoniK and JAX}
  \begin{frame}
    \frametitle{JAX: A Modern Tool for Scientific Computing and AI}
    \textbf{JAX} is a Python library that enables high-performance scientific computing by combining:
@@ -349,9 +342,9 @@
      \item No single scientist can master all fields in HPC.
      \item Interfaces between disciplines are crucial.
      \item And the trade-off between performance and usability is essential.
-     \item However, current trade-off is more about speed than usability, fault tolerance, and portability.
-     \item ArmoniK aims to provide a user-friendly interface for scientists and engineers while maintaining reasonable performance.
-     \item It allows scientists to focus on their research without deep expertise in parallel programming.
+     \item However, the current trade-off is speed-oriented, requiring deep expertise.
+     \item ArmoniK aims to shift this trade-off towards usability while maintaining reasonable performance.
+     \item It allows scientists to focus on their research without needing deep expertise in parallel programming.
      \item ArmoniK is not a replacement for existing HPC tools but a complementary framework that simplifies the development of distributed applications.
      \item We are looking for more use cases: \url{https://github.com/aneoconsulting/ArmoniK}
    \end{itemize}
