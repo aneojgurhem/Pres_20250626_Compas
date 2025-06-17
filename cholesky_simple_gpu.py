@@ -1,0 +1,1 @@
+    with Pymonik(endpoint="localhost:5001", partition="pymonik-gpu", environment={"pip":["jax[gpu]"]}):

@@ -331,7 +331,14 @@
 
  \begin{frame}
    \frametitle{What It Looks Like}
-
+   \begin{itemize}
+     \item Ideal for large-scale AI training, scientific simulations, and data analysis.
+           \inputminted[breaklines,frame=single,fontsize=\small]{python}{cholesky_simple.py}
+     \item Use GPUs instead of CPUs, just swap dependencies and partition.
+           \inputminted[breaklines,frame=single,fontsize=\small]{python}{cholesky_simple_gpu.py}
+           %  \item Also works for TPUs.
+           %  \item The JAX Neuron library allows to use AWS Trainium and Inferencia chips.
+   \end{itemize}
  \end{frame}
 \end{section}
 
