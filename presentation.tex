@@ -10,7 +10,7 @@
 \begin{document}
 \author{Jérôme Gurhem}
 \title{ArmoniK: Simplifying Access to Performance at Scale}
-\subtitle{DP2E-AI 2025}
+\subtitle{Compas 2025}
 \institute{Aneo}
 \date{\today}
 
@@ -163,7 +163,7 @@
  \end{frame}
 
  \begin{frame}
-   \frametitle{ArmoniK Programming Model}
+   \frametitle{Dependencies Expression}
    \begin{columns}[T]
      \begin{column}{0.5\textwidth}
        \begin{itemize}
@@ -265,120 +265,22 @@
      \includesvg[width=0.8\textwidth]{bench_scalability.svg}
    \end{center}
  \end{frame}
-
- \begin{frame}
-   \frametitle{Low Round-trip Latency}
-   \begin{itemize}
-     \item Cumulative distribution functions (CDFs) of round-trip latency
-     \item Batched submissions of 1, 10, and 100 independent zero-work tasks
-   \end{itemize}
-   \begin{center}
-     \includesvg[width=0.8\textwidth]{bench_roundtrip_latency.svg}
-   \end{center}
- \end{frame}
-
 \end{section}
 
-\begin{section}{Towards AI with ArmoniK and JAX}
- \begin{frame}
-   \frametitle{JAX: A Modern Tool for Scientific Computing and AI}
-   \textbf{JAX} is a Python library that enables high-performance scientific computing by combining:
-   \begin{itemize}
-     \item \textbf{NumPy-Compatible API} for familiar, concise numerical code
-     \item \textbf{Automatic differentiation} for optimization and ML
-     \item \textbf{Just-In-Time (JIT) compilation} for accelerating performance
-     \item \textbf{Seamless CPU, GPU, and TPU execution}
-     \item \textbf{Composable Transformations} Combine transformations easily: e.g., \texttt{jit(grad(f))}, \texttt{vmap(grad(f))}.
-   \end{itemize}
- \end{frame}
-
- \begin{frame}
-   \frametitle{XLA: The Compiler Behind the Speed}
-   \begin{itemize}
-     \item \textbf{XLA (Accelerated Linear Algebra)} is a domain-specific compiler developed by Google.
-     \item It transforms JAX Python functions into highly optimized machine code.
-     \item Performs \textbf{operation fusion, memory planning, and hardware-specific optimizations}.
-     \item Enables JAX to deliver \textbf{hardware-level performance} from high-level Python code.
-     \item Produces efficient code for CPUs, GPUs, and TPUs.
-   \end{itemize}
- \end{frame}
-
- \begin{frame}
-   \frametitle{Impact for Scientists and Engineers}
-   \begin{itemize}
-     \item Write portable, optimized code without low-level programming
-     \item Accelerate AI models, PDE solvers, and simulation kernels
-     \item Integrate HPC workflows with modern ML toolchains
-     \item Reduces boilerplate in high-performance computing
-     \item Enables reproducible, portable, and efficient scientific models
-   \end{itemize}
- \end{frame}
-
- \begin{frame}
-   \frametitle{ArmoniK + JAX: A Powerful Combination}
-   \begin{itemize}
-     \item \textbf{ArmoniK} provides a distributed task scheduler and data management layer.
-     \item \textbf{JAX} offers high-performance numerical computing capabilities.
-     \item Together, they enable:
-           \begin{itemize}
-             \item Scalable, fault-tolerant AI and scientific computing
-             \item Automatic data management and task scheduling
-             \item Efficient execution on heterogeneous hardware
-           \end{itemize}
-     \item Ideal for large-scale AI training, scientific simulations, and data analysis.
-     \item Supports dynamic task graphs and overlapping computations.
-     \item Provides a user-friendly interface for scientists and engineers.
-   \end{itemize}
- \end{frame}
-
- \begin{frame}
-   \frametitle{What It Looks Like}
-   \begin{itemize}
-     \item Ideal for large-scale AI training, scientific simulations, and data analysis.
-           \inputminted[breaklines,frame=single,fontsize=\small]{python}{cholesky_simple.py}
-     \item Use GPUs instead of CPUs, just swap dependencies and partition.
-           \inputminted[breaklines,frame=single,fontsize=\small]{python}{cholesky_simple_gpu.py}
-           %  \item Also works for TPUs.
-           %  \item The JAX Neuron library allows to use AWS Trainium and Inferencia chips.
-   \end{itemize}
- \end{frame}
-\end{section}
 
 \begin{section}{The Right Tool for the Right Job}
  \begin{frame}
    \frametitle{The Right Tool for the Right Job}
    \begin{itemize}
-     \item No single scientist can master all fields in HPC.
-     \item Interfaces between disciplines are crucial.
-     \item And the trade-off between performance and usability is essential.
-     \item However, the current trade-off is speed-oriented, requiring deep expertise.
-     \item ArmoniK aims to shift this trade-off towards usability while maintaining reasonable performance.
+     \item Current interfaces are built around speed and require deep expertise in parallel parallel programming.
+     \item No single scientist can master all fields, including HPC.
+     \item Interfaces between disciplines are crucial to de-couple field-related complexities.
+     \item ArmoniK aims to shift the current trade-off towards usability while maintaining reasonable performance.
      \item It allows scientists to focus on their research without needing deep expertise in parallel programming.
-     \item ArmoniK is not a replacement for existing HPC tools but a complementary framework that simplifies the development of distributed applications.
      \item We are looking for more use cases: \url{https://github.com/aneoconsulting/ArmoniK}
    \end{itemize}
  \end{frame}
 
- \begin{frame}
-   \frametitle{Questions and Discussions}
-   \begin{itemize}
-     \item What missing interoperability layers (software, standard, or abstraction) would most accelerate convergence between traditional HPC linear algebra workflows and today's extreme-scale AI workloads?
-           \begin{itemize}
-             \item There are tentatives between hardware and software (Kokkos, JAX, etc.), but what about applications that does not fit in these frameworks?
-             \item In companies, we see that over time, organizational interfaces tends to match the interfaces in the IT systems.
-             \item We still have a lot of work to build scientific and technology interfaces that allows users to cooperate without a deep expertise in all HPC/AI-related fields.
-           \end{itemize}
-     \item Looking ahead to 2030, do you expect the principal bottleneck for extreme-scale AI to be data, algorithms, resilience or energy, and how does that prediction shape your research priorities today?
-           \begin{itemize}
-             \item \textbf{Energy}: It will probably be an issue in Europe, probably less true elsewhere.
-             \item It will be a trade-off between the three others.
-           \end{itemize}
-     \item Given the different developments in architecture processors for AI and “computational science”, do you think we'll see a convergence or divergence of roadmaps?
-           \begin{itemize}
-             \item HPC will use whatever will be available on the market, as in the last 30 years.
-           \end{itemize}
-   \end{itemize}
- \end{frame}
 
  \begin{frame}
    \frametitle{Thank you for your attention!}
