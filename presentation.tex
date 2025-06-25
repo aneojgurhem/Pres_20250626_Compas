@@ -182,46 +182,14 @@
  \end{frame}
 
  \begin{frame}
-   \frametitle{Dynamic Graph}
-   \begin{block}{Definition}
-     Dependency graph is not fully known when scheduling starts.
-   \end{block}
-   \begin{itemize}
-     \item Task dependencies not known before submission
-     \item Submissions can happen anytime
-     \item Tasks can submit new tasks
-     \item Tasks can delegate the production of their output to their new tasks
-   \end{itemize}
-   \footnotesize
-   \inputminted[frame=single]{python}{subtasking.py}
- \end{frame}
-
- \begin{frame}
-   \frametitle{Dynamic Graph Example}
-   \begin{figure}
-     \includesvg[width=0.8\textwidth]{subtasking.svg}
-   \end{figure}
- \end{frame}
-
- \begin{frame}
-   \frametitle{Computations/Comm Overlapping}
-   \begin{block}{Data Management}
-     Responsibility for data allocation, transfer, and storage between computational operations
-   \end{block}
-   \begin{itemize}
-     \item ArmoniK is responsible for tasks input and output data management
-     \item Allows for automatic communication + scheduling/task execution overlapping
-     \item Automatic Uncoordinated Checkpointing
-   \end{itemize}
-   \begin{figure}
-     \includegraphics[width=0.8\textwidth, trim={0 7cm 0 0}, clip]{pipelining AK 2.pdf}
-   \end{figure}
- \end{frame}
-
- \begin{frame}
    \frametitle{ArmoniK Built-in Features}
    \begin{itemize}
      \item \textbf{Open Source}: \url{https://github.com/aneoconsulting/ArmoniK}
+     \item \textbf{Fault tolerance}: Continue working without interruption even when one or more nodes fail
+           \begin{itemize}
+             \item Support loss of all computing resources
+           \end{itemize}
+     \item \textbf{Data Management}: Allow for computations and communications overlapping, checkpointing, and prefetching
      \item \textbf{Observability}: Extensive GUIs, CLIs, monitoring APIs, metrics, logs, and traces
      \item \textbf{Portability}: Effort to transfer an application from one environment to another
            \begin{itemize}
@@ -230,40 +198,12 @@
            \end{itemize}
      \item \textbf{Malleability}: Dynamic reconfiguration of the number of allocated resources during execution without interruption
      \item \textbf{Resource Sharing}: Share resources between applications to maximize resource utilization
-     \item \textbf{Modularity}: Modules can be swapped without modifying ArmoniK's code to suit user needs and constraints
      \item \textbf{Production Ready}: Designed to be used in production environments, with a focus on stability, security, scalability, and maintainability
            \begin{itemize}
              \item Used by our clients in their critical systems
              \item Drives our needs for validation and guarantees, monitoring, stability
            \end{itemize}
    \end{itemize}
- \end{frame}
-
- \begin{frame}
-   \frametitle{Fault Tolerance}
-   \begin{itemize}
-     \item Works without interruption even when one or more nodes fail
-     \item Allow support for preemptible computing resources
-     \item Automatic and efficient task retry on failure
-     \item Each curve represents a percentage of preempted instances
-   \end{itemize}
-   \begin{center}
-     \vspace{0.2ex}
-     \includesvg[width=0.75\textwidth]{bench_preemption.svg}
-   \end{center}
- \end{frame}
-
- \begin{frame}
-   \frametitle{Throughput Scalability}
-   \begin{itemize}
-     \item Indep : independent tasks workload
-     \item Graph : nested fork-join workload
-     \item 1-second long tasks
-     \item Empty input/output data
-   \end{itemize}
-   \begin{center}
-     \includesvg[width=0.8\textwidth]{bench_scalability.svg}
-   \end{center}
  \end{frame}
 \end{section}
 
